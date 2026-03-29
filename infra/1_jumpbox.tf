@@ -34,7 +34,7 @@ resource "aws_instance" "jumpbox" {
   key_name               = var.ssh_key_name
   vpc_security_group_ids = try([module.vpc[var.vpc_name].security_group_ids["vmseries_mgmt"].id], [])
   ebs_optimized          = true
-  subnet_id              = module.subnet_sets["security_vpc-mgmt"].aws_subnet.this["${var.region}${var.az}"].id
+  subnet_id              = module.subnet_sets["security_vpc-mgmt"].id
   lifecycle {
     ignore_changes = [ami]
   }
