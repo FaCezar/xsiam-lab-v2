@@ -238,11 +238,11 @@ locals {
 
       routes = {
         mgmt_default = {
-          vpc              = "${var.name_prefix}-vpc"
+          vpc              = "security_vpc"
           subnet_group     = "mgmt"
           to_cidr          = "0.0.0.0/0"
           destination_type = "ipv4"
-          next_hop_key     = "${var.name_prefix}-vpc"
+          next_hop_key     = "security_vpc"
           next_hop_type    = "internet_gateway"
         }
       }
