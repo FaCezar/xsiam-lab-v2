@@ -3,7 +3,7 @@
   <mgt-config>
     <users>
       <entry name="admin">
-        <phash>$5$ettchtaa$fX4E.of5IjWB2L9aHBPbpvecea7d5/ruMFrv6nRb5w1</phash>
+        <phash>$5$dbhgblso$g8d0weC3/X3ohD.3jmmQ8RUWcSk4Z4x14WiOibvyTl8</phash>
         <permissions>
           <role-based>
             <superuser>yes</superuser>
@@ -357,7 +357,11 @@
             <disable-http>yes</disable-http>
           </service>
           <hostname>davila-xsiam-labvmseries-01</hostname>
-          <device-telemetry/>
+          <device-telemetry>
+            <threat-prevention>no</threat-prevention>
+            <device-health-performance>no</device-health-performance>
+            <product-usage>no</product-usage>
+          </device-telemetry>
           <dns-setting>
             <servers>
               <primary>8.8.8.8</primary>
