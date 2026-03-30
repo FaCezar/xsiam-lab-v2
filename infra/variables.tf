@@ -362,7 +362,7 @@ variable "vmseries" {
 ## Locals
 
 locals {
-  vmseries {
+  vmseries = {
     vmseries = {
       instances = {
         "01" = { az = "${var.region}${var.az}" }
