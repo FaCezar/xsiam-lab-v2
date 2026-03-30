@@ -104,22 +104,8 @@ resource "aws_iam_role_policy" "vmimport" {
   })
 }
 
-# Confirm if Broker VMDK exists
-data "aws_s3_objects" "broker_vm_bucket" {
-  bucket = aws_s3_bucket.broker_vm.id
-}
-
-locals {
-  vmdk_files = [
-    for k in data.aws_s3_objects.broker_vm_bucket.keys : k
-    if length(regexall("\\.vmdk$", lower(k))) > 0 && length(regexall("/", k)) == 0
-  ]
-
-  broker_vmdk_key = length(local.vmdk_files) > 0 ? local.vmdk_files[0] : null
-}
-
 resource "aws_s3_object" "broker_vm_configuration" {
-  count = local.broker_vmdk_key != null ? 1 : 0
+  count = var.artifact != null ? 1 : 0
 
   bucket       = aws_s3_bucket.broker_vm.id
   key          = "configuration.json"
@@ -130,7 +116,7 @@ resource "aws_s3_object" "broker_vm_configuration" {
     Format      = "vmdk"
     UserBucket = {
       S3Bucket = aws_s3_bucket.broker_vm.bucket
-      S3Key    = local.broker_vmdk_key
+      S3Key    = var.artifact
     }
   })
 }

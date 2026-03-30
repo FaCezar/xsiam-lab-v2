@@ -5,3 +5,7 @@ variable "name_prefix" {
 variable "global_tags" {
   description = "Global tags configured for all provisioned resources"
 }
+
+variable "artifact" {
+  description = "Artifact name on S3"
+}

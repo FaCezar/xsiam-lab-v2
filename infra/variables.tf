@@ -35,6 +35,10 @@ variable "broker_vm" {
   default     = false
 }
 
+variable "broker_vm_key" {
+  description = "Artifact name on S3"
+}
+
 variable "engine_vm" {
   description = "Engine VM Deployment"
   type        = bool
