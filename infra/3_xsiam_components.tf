@@ -1,6 +1,6 @@
 module "broker_vm" {
-  count  = var.broker_vm ? 1 : 0
-  source = "./modules/broker_vm"
+  count       = var.broker_vm ? 1 : 0
+  source      = "./modules/broker_vm"
   name_prefix = var.name_prefix
   global_tags = var.global_tags
 }
@@ -33,18 +33,18 @@ data "aws_ami" "ubuntu2204" {
 locals {
   xsiam_components = {
     "${var.name_prefix}-broker_vm" = {
-      deploy = var.broker_vm
-      ami    = local.broker_ami_id
-      type   = "t3.medium"
-      user   = "ubuntu"
-      network = { subnet = var.broker_vm_subnet, public_ip = false} # Always Public IP is FALSE
+      deploy  = var.broker_vm
+      ami     = local.broker_ami_id
+      type    = "t3.medium"
+      user    = "ubuntu"
+      network = { subnet = var.broker_vm_subnet, public_ip = false } # Always Public IP is FALSE
     }
     "${var.name_prefix}-engine" = {
-      deploy = var.engine_vm
-      ami    = local.engine_ami_id
-      type   = "t3.medium"
-      user   = "ubuntu"
-      network = { subnet = var.engine_vm_subnet, public_ip = false} # Always Public IP is FALSE
+      deploy  = var.engine_vm
+      ami     = local.engine_ami_id
+      type    = "t3.medium"
+      user    = "ubuntu"
+      network = { subnet = var.engine_vm_subnet, public_ip = false } # Always Public IP is FALSE
     }
   }
 }

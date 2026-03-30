@@ -36,12 +36,12 @@ variable "broker_vm" {
 }
 
 variable "broker_vm_key" {
-  type = string
+  type    = string
   default = "broker-vm-30.0.63.vmdk"
 }
 
 variable "broker_vm_subnet" {
-  type = string
+  type    = string
   default = "vlan1"
 }
 
@@ -52,7 +52,7 @@ variable "engine_vm" {
 }
 
 variable "engine_vm_subnet" {
-  type = string
+  type    = string
   default = "vlan1"
 }
 

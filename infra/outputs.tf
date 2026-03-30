@@ -44,3 +44,22 @@ output "broker_vm_cp" {
 output "broker_vm_import" {
   value = var.broker_vm ? "aws ec2 import-snapshot --description '<Cortex XSIAM Broker VM' --disk-container 'file://configuration.json'" : null
 }
+
+output "broker_vm_import_validate" {
+  value = var.broker_vm ? "aws ec2 describe-import-snapshot-tasks --import-task-ids <IMPORT_SNAPSHOT_ID>" : null
+}
+
+output "broker_vm_register_ami" {
+  value = var.broker_vm ? (
+    <<-EOT
+  aws ec2 register-image \
+  --name "broker-vm-ami" \
+  --architecture x86_64 \
+  --root-device-name /dev/sda1 \
+  --virtualization-type hvm \
+  --boot-mode legacy-bios \
+  --ena-support \
+  --block-device-mappings "DeviceName=/dev/sda1,Ebs={SnapshotId=snap-XXXXXXX,VolumeSize=480,VolumeType=gp3,Iops=3000,Throughput=125,DeleteOnTermination=true}"
+EOT
+  ) : null
+}
