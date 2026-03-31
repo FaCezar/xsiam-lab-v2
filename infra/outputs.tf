@@ -37,8 +37,12 @@
 #   value = local.fw_eni_ids
 # }
 
-output "route_tables" {
-  value = module.subnet_sets
+# output "route_tables" {
+#   value = local.fw_vlans
+# }
+
+output "fw_routes" {
+  value = local.fw_routes
 }
 
 output "broker_vm_bucket_name" {
