@@ -127,6 +127,7 @@ Defined in **infra/terraform.tfvars**, you need to update the following values:
 | `linux_deploy` | Deploy Linux VM | `true / false` |
 | `windows_server_deploy` | Deploy Windows Server VM | `true / false` |
 | `kali_deploy` | Deploy Kali Linux VM | `true / false` |
+| `create_public_ip_mgmt` | Create Public IP on VM-Series | `true / false` |
 
 ---
 
