@@ -109,20 +109,6 @@ locals {
     k => v
     if can(regex("vlan", k))
   }
-
-  fw_routes = merge([
-    for fw_key, eni_map in local.fw_eni_ids : {
-      for subnet_key, subnet_val in local.fw_vlans :
-      "${fw_key}-${subnet_key}" => {
-        firewall_key = fw_key
-        subnet_key   = subnet_key
-        eni_id       = eni_map[regex("vlan[0-9]+", subnet_key)]
-
-        route_table_ids = subnet_val.route_table_ids
-      }
-      if can(eni_map[regex("vlan[0-9]+", subnet_key)])
-    }
-  ]...)
 }
 
 ### ROUTES ###
