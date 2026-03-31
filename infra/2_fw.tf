@@ -93,9 +93,15 @@ EOF
 }
 
 locals {
-  fw_interfaces = {
-    for k, v in module.vmseries :
-    k => v.interfaces
+  fw_eni_ids = {
+    for k, v in {
+      for k2, v2 in module.vmseries :
+      k2 => v2.interfaces
+    } :
+    k => {
+      for iface_key, iface in v :
+      iface_key => iface.id
+    }
   }
 }
 
