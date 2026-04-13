@@ -31,7 +31,7 @@ output "vmseries_public_ips" {
 
 output "vmseries_interfaces" {
   description = "Map of private IPs created within `vmseries` module instances."
-  value       = module.vmseries.interfaces
+  value       = { for k, v in module.vmseries : k => v.interfaces }
 }
 
 # output "subnets" {
