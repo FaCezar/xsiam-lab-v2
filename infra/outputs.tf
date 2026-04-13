@@ -1,18 +1,17 @@
 ## VMs
 
-# output "ssh_file_entries" {
-#   value = join("\n\n", [
-#     for name, instance in local.instances : <<-EOT
-#       Host ${name}
-#         HostName ${aws_instance.vm[name].private_ip}
-#         User ${instance.user}
-#         IdentityFile ~/Documents/${var.ssh_key_name}.pem
-#         IdentitiesOnly yes
-#     EOT
-#     if contains(["xsiam-ubuntu-engine", "centos9", "kali"], name) # Solo Linux
-#   ])
-#   description = "modify vim ~/.ssh/config"
-# }
+output "ssh_file_entries" {
+  value = join("\n\n", [
+    for name, inst in aws_instance.jumpbox : <<-EOT
+      Host ${name}
+        HostName ${aws_eip.jumpbox[name].public_ip}
+        User ${local.jumpbox[name].user}
+        IdentityFile ~/Documents/${var.ssh_key_name}.pem
+        IdentitiesOnly yes
+    EOT
+  ])
+  description = "modify vim ~/.ssh/config"
+}
 
 output "jumpbox_access" {
   value = {
