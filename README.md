@@ -1,6 +1,6 @@
 # XSIAM-LAB-V2
 
-Infrastructure as Code to deploy an XSIAM lab using **Terraform** and **GitHub Actions**.
+Infrastructure as Code to deploy an XSIAM lab using **Terraform** and **GitHub Actions**..
 
 ---
 
