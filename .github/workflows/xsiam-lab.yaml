@@ -32,11 +32,7 @@ jobs:
         crtx_resp="$(curl -sS "${CORTEX_API_URL}/public_api/v1/unified-cli/releases/download-link?os=linux&architecture=amd64" \
           -H "x-xdr-auth-id: ${CORTEX_API_KEY_ID}" \
           -H "Authorization: ${CORTEX_API_KEY}")"
-
         crtx_url="$(echo "$crtx_resp" | jq -r '.signed_url')"
-        test -n "$crtx_url"
-        test "$crtx_url" != "null"
-
         curl -fsSL -o cortexcli "$crtx_url"
         chmod +x cortexcli
         ./cortexcli --version
@@ -52,7 +48,7 @@ jobs:
           --repo-id "${{github.repository}}" \
           --branch "${{github.ref_name}}" \
           --source "GITHUB_ACTIONS" \
-          --create-repo-if-missing
+          --create-repo-if-missing --compact
 
   infra_deployment:
     needs: cortex_code_scan
