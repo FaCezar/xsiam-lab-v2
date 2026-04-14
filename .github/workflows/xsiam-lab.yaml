@@ -3,6 +3,15 @@ name: Deployment xsiam-lab
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - 'README.md'
+      - 'configuration.json'
+      - '*.png'
+  pull_request:
+    paths-ignore:
+      - 'README.md'
+      - 'configuration.json'
+      - '*.png'
 
 permissions:
   contents: read

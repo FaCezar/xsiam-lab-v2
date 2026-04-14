@@ -54,7 +54,7 @@ Tools we use:
 
 - AWS CLI - [Install here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 - Visual Studio Code - [Install here](https://code.visualstudio.com/download)
-- Github Desktop = [Install here](https://desktop.github.com/download/)
+- Github Desktop - [Install here](https://desktop.github.com/download/)
 
 You will also need a GitHub account and fork this repository.
 
