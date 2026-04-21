@@ -19,4 +19,4 @@ engine_vm_subnet = "vlan1" # allowed values vlan1, vlan2. vlan1 by default
 linux_deploy          = true
 windows_server_deploy = true
 kali_deploy           = true
-create_public_ip_mgmt = true
+
