@@ -1,6 +1,7 @@
 name: Deployment xsiam-lab v2
 
 on:
+  workflow_dispatch: 
   push:
     branches: [ "main" ]
     paths-ignore:
